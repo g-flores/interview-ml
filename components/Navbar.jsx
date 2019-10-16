@@ -5,9 +5,13 @@ import Container from "./Container";
 
 function Navbar({ initialQuery = "" }) {
   const [search, setSearch] = useState(initialQuery);
+
   const handleChange = useCallback(e => {
     setSearch(e.target.value);
   }, []);
+
+  const handleFocus = useCallback(e => e.target.select(), []);
+
   const handleSubmit = useCallback(
     e => {
       e.preventDefault();
@@ -19,16 +23,26 @@ function Navbar({ initialQuery = "" }) {
     },
     [search]
   );
+
   const canSubmit = search !== "";
+
   return (
     <nav className="bg-mercado pv2 shadow-1">
       <Container className="flex">
         <Link href="/">
           <a>
-            <img src="http://static.mlstatic.com/org-img/mobile/ch/0.4.7/assets/logo-new.png" />
+            <img
+              src="http://static.mlstatic.com/org-img/mobile/ch/0.4.7/assets/logo-new.png"
+              alt="Logo Mercado Libre"
+            />
           </a>
         </Link>
-        <form className="flex-auto flex" onSubmit={handleSubmit} disabled>
+        <form
+          className="flex-auto flex"
+          target="/items"
+          method="GET"
+          onSubmit={handleSubmit}
+        >
           <input
             className="flex-auto pa2 ba b--light-gray br2 br--left"
             type="search"
@@ -36,6 +50,7 @@ function Navbar({ initialQuery = "" }) {
             placeholder="Nunca dejes de buscar"
             value={search}
             onChange={handleChange}
+            onFocus={handleFocus}
           />
           <button
             className={`ba br2 br--right pointer animate ${

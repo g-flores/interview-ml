@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Price from "../../components/Price";
 
 /**
- * Displays details about an item.
+ * Displays details about an item. Corresponds to the route `/items/:id`
  */
 function ItemDetail({ item }) {
   const {
@@ -22,12 +22,16 @@ function ItemDetail({ item }) {
       <Breadcrumbs className="mb3" crumbs={category} />
       <div className="bg-white">
         <div className="flex-ns">
-          <img src={picture} className="w-100 w-70-ns h-auto" />
-          <div className="pa3">
+          <img
+            src={picture}
+            className="w-100 w-60-ns h-auto bb bn-ns b--light-gray"
+          />
+          <div className="w-100 w-40-ns pa4 bl-ns b--light-gray">
             <span className="f5 ttc gray">
-              {condition} - {sold_quantity} vendidos
+              {condition}
+              {sold_quantity && ` - ${sold_quantity} vendidos`}
             </span>
-            <h1 className="f4 ma0 mt1 mb3">{title}</h1>
+            <h1 className="f3 ma0 mt1 mb3">{title}</h1>
             <span className="f2">
               <Price {...price} />
             </span>
@@ -39,13 +43,14 @@ function ItemDetail({ item }) {
             </button>
           </div>
         </div>
-        <div className="pa3">
+        <div className="pa4 bt b--light-gray">
           <h2 className="f4">Descripción del producto</h2>
-          <p className="pre-wrap">{description}</p>
+          <p className="description">{description}</p>
         </div>
         <style jsx>{`
-          .pre-wrap {
+          .description {
             white-space: pre-wrap;
+            word-break: break-word;
           }
         `}</style>
       </div>

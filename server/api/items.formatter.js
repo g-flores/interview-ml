@@ -1,5 +1,4 @@
-import fetch from "cross-fetch";
-import {
+const {
   applySpec,
   always,
   path,
@@ -12,7 +11,7 @@ import {
   isEmpty,
   either,
   map
-} from "ramda";
+} = require("ramda");
 
 const formatResults = applySpec({
   id: prop("id"),
@@ -41,22 +40,4 @@ const formatCategories = compose(
   find(propEq("id", "category"))
 );
 
-export default async (req, res) => {
-  const { q } = req.query;
-  const { results, filters } = await fetch(
-    `https://api.mercadolibre.com/sites/MLA/search?limit=4&q=${q}`
-  ).then(res => res.json());
-
-  const formattedResults = results.map(formatResults);
-  const categories = formatCategories(filters);
-
-  res.setHeader("Content-Type", "application/json");
-  res.statusCode = 200;
-  res.end(
-    JSON.stringify({
-      author: { name: "Gaston", lastName: "Flores" },
-      items: formattedResults,
-      categories
-    })
-  );
-};
+module.exports = { formatResults, formatCategories };

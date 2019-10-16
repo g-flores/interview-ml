@@ -5,7 +5,7 @@ import ListItem from "../../components/ListItem";
 import Breadcrumbs from "../../components/Breadcrumbs";
 
 /**
- * Renders a list of items, based on the user query
+ * Renders a list of items, based on the user query. Corresponds to the route `/items`
  */
 function Items({ items, categories }) {
   return (

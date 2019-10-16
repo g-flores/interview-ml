@@ -20,7 +20,7 @@ class MyApp extends App {
           {tachyons}
         </style>
         <style jsx global>{`
-          @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+          @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
           html,
           body {

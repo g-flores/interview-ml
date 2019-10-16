@@ -1,6 +1,9 @@
 import React from "react";
 import Container from "../components/Container";
 
+/**
+ * Landing page. Corresponds to the route `/`
+ */
 function Index() {
   return (
     <Container className="mt4 f2">

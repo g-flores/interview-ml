@@ -5,10 +5,14 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const api = require("./api");
+
 app
   .prepare()
   .then(() => {
     const server = express();
+
+    server.use("/api", api);
 
     server.get("*", (req, res) => {
       return handle(req, res);
@@ -16,7 +20,11 @@ app
 
     server.listen(3000, err => {
       if (err) throw err;
-      console.log("> Ready on http://localhost:3000");
+      console.log(
+        `> Ready on http://localhost:3000 on ${
+          dev ? "development" : "production"
+        } mode`
+      );
     });
   })
   .catch(ex => {
