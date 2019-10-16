@@ -11,9 +11,11 @@ function Items({ items, categories }) {
   return (
     <Container className="mt4">
       <Breadcrumbs className="mb3" crumbs={categories} />
-      {items.map((item, key) => (
-        <ListItem item={item} key={key} />
-      ))}
+      {items && items.length > 0 ? (
+        items.map((item, key) => <ListItem item={item} key={key} />)
+      ) : (
+        <h1 className="f3 tc">Lo sentimos, no encontramos resultados 😢</h1>
+      )}
     </Container>
   );
 }

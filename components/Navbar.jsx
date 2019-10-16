@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import Container from "./Container";
+import LookingGlassIcon from "./LookingGlassIcon";
 
 function Navbar({ initialQuery = "" }) {
   const [search, setSearch] = useState(initialQuery);
@@ -53,13 +54,13 @@ function Navbar({ initialQuery = "" }) {
             onFocus={handleFocus}
           />
           <button
-            className={`ba br2 br--right pointer animate ${
+            className={`flex items-center justify-center ba br2 br--right pointer animate ${
               canSubmit ? "bg-blue white" : "bg-light-gray gray"
             }`}
             type="submit"
             disabled={!canSubmit}
           >
-            Enviar
+            <LookingGlassIcon className="w2 h2" />
           </button>
         </form>
       </Container>

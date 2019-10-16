@@ -6,7 +6,7 @@ const {
 
 module.exports = async (req, res) => {
   try {
-    const { id } = req.query;
+    const { id } = req.params;
     const [details, description] = await Promise.all([
       fetch(`https://api.mercadolibre.com/items/${id}`).then(res => res.json()),
       fetch(`https://api.mercadolibre.com/items/${id}/description`).then(res =>
@@ -24,17 +24,12 @@ module.exports = async (req, res) => {
 
     const item = formatItemDetails(details, plain_text, category);
 
-    res.setHeader("Content-Type", "application/json");
-    res.statusCode = 200;
-    res.end(
-      JSON.stringify({
-        author: { name: "Gaston", lastName: "Flores" },
-        item
-      })
-    );
+    res.send({
+      author: { name: "Gaston", lastName: "Flores" },
+      item
+    });
   } catch (e) {
     console.error(e);
-    res.statusCode = 500;
-    res.end("Error while fetching item details");
+    res.sendStatus(500);
   }
 };
