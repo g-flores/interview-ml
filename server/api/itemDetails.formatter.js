@@ -20,7 +20,7 @@ const formatItemDetails = (details, description, category) =>
     price: applySpec({
       currency: prop("currency_id"),
       amount: prop("price"),
-      decimals: always(2)
+      decimals: always(0)
     })
   })(details);
 

@@ -22,7 +22,7 @@ const formatResults = applySpec({
   price: applySpec({
     currency: prop("currency_id"),
     amount: prop("price"),
-    decimals: always(2)
+    decimals: always(0)
   })
 });
 

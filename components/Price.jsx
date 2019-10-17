@@ -1,10 +1,10 @@
 import React, { Fragment, useMemo } from "react";
 
-function Price({ amount, decimals, currency, hasDecimals }) {
+function Price({ amount, decimals, currency, showDecimals }) {
   const formattedAmount = useMemo(() => amount.toLocaleString(), [amount]);
   return (
     <Fragment>
-      $ {formattedAmount} {hasDecimals && <sup>00</sup>}
+      $ {formattedAmount} {showDecimals && <sup>{decimals}</sup>}
     </Fragment>
   );
 }

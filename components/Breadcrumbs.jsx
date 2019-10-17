@@ -6,8 +6,8 @@ function Breadcrumbs({ className, crumbs }) {
       {crumbs &&
         crumbs.map((crumb, key) => (
           <Fragment key={key}>
-            <span className="dib">{crumb}</span>
-            {key !== crumbs.length - 1 && <span> > </span>}
+            <span className="dib f5">{crumb}</span>
+            {key !== crumbs.length - 1 && <span className="b f6"> > </span>}
           </Fragment>
         ))}
     </div>

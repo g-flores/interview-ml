@@ -4,6 +4,9 @@ const {
   formatCategories
 } = require("./itemDetails.formatter");
 
+/**
+ * Handles requests made to the `/api/items/:id` endpoint
+ */
 module.exports = async (req, res) => {
   try {
     const { id } = req.params;

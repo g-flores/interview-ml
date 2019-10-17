@@ -1,6 +1,9 @@
 const fetch = require("cross-fetch");
 const { formatResults, formatCategories } = require("./items.formatter");
 
+/**
+ * Handles requests made to the `/api/items` endpoint
+ */
 module.exports = async (req, res) => {
   try {
     const { q } = req.query;

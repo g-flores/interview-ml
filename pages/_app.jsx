@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import App from "next/app";
+import Head from "next/head";
 import tachyons from "tachyons";
 import Navbar from "../components/Navbar";
 
@@ -14,6 +15,9 @@ class MyApp extends App {
     } = router;
     return (
       <Fragment>
+        <Head>
+          <title key="title">Entrevista Mercado Libre</title>
+        </Head>
         <Navbar initialQuery={q} />
         <Component {...pageProps} />
         <style jsx global>
